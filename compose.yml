@@ -1,0 +1,18 @@
+services:
+  ip-pinto-dev:
+    container_name: ip-pinto-dev
+    image: ip-pinto-dev:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DEBUG=true
+networks:
+  default:
+      name: cloudflare
+      external: true

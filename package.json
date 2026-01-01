@@ -1,0 +1,30 @@
+{
+  "name": "ip-pinto-dev",
+  "version": "1.0.0",
+  "description": "A simple HTTP server that returns the visitor's IP address in Plain Text, JSON, or JSONP and XML format.",
+  "author": {
+    "name": "Manuel Pinto",
+    "email": "manuel@pinto.dev",
+    "url": "https://manuel.pinto.dev"
+  },
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run --watch --hot index.ts",
+    "start": "bun run index.ts",
+    "build": "bun build index.ts --compile --minify --outfile=ip-pinto-dev",
+    "build:linux:x64": "bun build index.ts --compile --minify --target=bun-linux-x64-modern --outfile=dist/ip-pinto-dev_linux-x64",
+    "build:linux:arm64": "bun build index.ts --compile --minify --target=bun-linux-arm64 --outfile=dist/ip-pinto-dev_linux-arm64",
+    "build:mac:x64": "bun build index.ts --compile --minify --target=bun-darwin-x64 --outfile=dist/ip-pinto-dev_mac-x64",
+    "build:mac:arm64": "bun build index.ts --compile --minify --target=bun-darwin-arm64 --outfile=dist/ip-pinto-dev_mac-arm64",
+    "build:windows:x64": "bun build index.ts --compile --minify --target=bun-windows-x64 --outfile=dist/ip-pinto-dev_windows-x64"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
