@@ -9,9 +9,9 @@ services:
       - "3000:3000"
     restart: unless-stopped
     environment:
-      - NODE_ENV=production
       - PORT=3000
       - DEBUG=true
+      - POWERED_BY="ip.pinto.dev"
 networks:
   default:
       name: cloudflare

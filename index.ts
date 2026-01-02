@@ -13,6 +13,12 @@ const server = Bun.serve({
 
     const timestamp = new Date().toISOString()
 
+    const commonHeaders = {
+      "Connection": "keep-alive",
+      "Keep-Alive": "timeout=5, max=1000",
+      "Powered-By": `${process.env.POWERED_BY || req.headers.get("host")}`,
+    }
+
     // DEBUG
     if (process.env.DEBUG !== "false") {
         console.log(`[${timestamp}] ✅ ${req.method} request from ${ip}`)
@@ -22,6 +28,7 @@ const server = Bun.serve({
     if (format === "json") {
       return new Response(`${JSON.stringify({ ip })}\n`, {
         headers: {
+          ...commonHeaders,
           "Content-Type": "application/json",
         },
       })
@@ -31,6 +38,7 @@ const server = Bun.serve({
     if (format === "jsonp") {
       return new Response(`${callback}(${JSON.stringify({ ip })});\n`, {
         headers: {
+          ...commonHeaders,
           "Content-Type": "application/javascript",
         },
       })
@@ -42,6 +50,7 @@ const server = Bun.serve({
         `<?xml version="1.0" encoding="UTF-8"?>\n<response><ip>${ip}</ip></response>\n`,
         {
           headers: {
+            ...commonHeaders,
             "Content-Type": "application/xml",
           },
         }
@@ -51,6 +60,7 @@ const server = Bun.serve({
     // TEXT
       return new Response(`${ip}\n`, {
         headers: {
+          ...commonHeaders,
           "Content-Type": "text/plain",
         },
       })
@@ -58,6 +68,4 @@ const server = Bun.serve({
   },
 })
 
-console.log(
-  `🚀 Server running at http://${server.hostname}:${server.port}\n`
-)
+console.log(`🚀 Server running at http://${server.hostname}:${server.port}\n`)

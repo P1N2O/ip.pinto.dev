@@ -14,12 +14,7 @@
   "scripts": {
     "dev": "bun run --watch --hot index.ts",
     "start": "bun run index.ts",
-    "build": "bun build index.ts --compile --minify --outfile=ip-pinto-dev",
-    "build:linux:x64": "bun build index.ts --compile --minify --target=bun-linux-x64-modern --outfile=dist/ip-pinto-dev_linux-x64",
-    "build:linux:arm64": "bun build index.ts --compile --minify --target=bun-linux-arm64 --outfile=dist/ip-pinto-dev_linux-arm64",
-    "build:mac:x64": "bun build index.ts --compile --minify --target=bun-darwin-x64 --outfile=dist/ip-pinto-dev_mac-x64",
-    "build:mac:arm64": "bun build index.ts --compile --minify --target=bun-darwin-arm64 --outfile=dist/ip-pinto-dev_mac-arm64",
-    "build:windows:x64": "bun build index.ts --compile --minify --target=bun-windows-x64 --outfile=dist/ip-pinto-dev_windows-x64"
+    "build": "bun build index.ts --compile --bytecode --outfile=dist/ip-pinto-dev"
   },
   "devDependencies": {
     "@types/bun": "latest"
