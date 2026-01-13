@@ -5,7 +5,7 @@ const server = Bun.serve({
     const url = new URL(req.url);
     const format = url.searchParams.get("format") || url.searchParams.get("fmt") || url.pathname.split(".")[1] || "text";
     const callback = url.searchParams.get("callback") || url.searchParams.get("cb") || "callback";
-    const isGeo = url.pathname.startsWith("/geo");
+    const isGeo = url.pathname !== "/";
 
     const ip = req.headers.get("cf-connecting-ipv6") ||
       req.headers.get("cf-connecting-ip") ||
@@ -28,6 +28,7 @@ const server = Bun.serve({
         asRegion,
         asn: req.headers.get("x-asn") || undefined,
         asOrganization: req.headers.get("cf-asorganization") || undefined,
+        userAgent: req.headers.get("user-agent") || undefined
       } : undefined;
 
     const payload = { ip, ...geo };
