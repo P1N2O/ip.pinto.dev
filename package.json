@@ -1,7 +1,7 @@
 {
   "name": "ip.8080.li",
   "version": "1.0.0",
-  "description": "A simple HTTP server that returns the visitor's IP address in Plain Text, JSON, or JSONP and XML format.",
+  "description": "A simple HTTP server that returns the visitor's IP address in Plain Text, JSON, JSONP or XML format along with optional geographic information.",
   "author": {
     "name": "Manuel Pinto",
     "email": "manuel@pinto.dev",
